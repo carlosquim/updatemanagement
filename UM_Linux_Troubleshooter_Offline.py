@@ -964,7 +964,6 @@ class RepositoryManager:
         if len(repoUris) == 0:
             return 1 #success, nothing to check
 
-        repoUris = self.extractNetLocFromUris(repoUris)
         self.appendToLogs("Extracted RepoURI netloc List: " + str(set(repoUris)), status_debug)
 
         status = 1
@@ -1021,7 +1020,7 @@ class RepositoryManager:
 
         netLocList = list(set(netLocList))
         return netLocList  
-
+    
 def check_access_to_linux_repos():
     rule_id = "Linux.ReposAccessCheck"
     rule_group_id = "connectivity"
