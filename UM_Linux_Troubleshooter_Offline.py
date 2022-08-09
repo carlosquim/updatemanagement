@@ -972,13 +972,13 @@ class RepositoryManager:
             status &= self.pingEndpoint(uri)  #not stopping here, because want to ping all uris present
             
         if status == 0:
-            self.appendToLogs("Error encountered while accessing repositories configured in package manager yum/apt/zypper via network!", status_debug)
+            self.appendToLogs("Error encountered while accessing repositories configured in package pinging repos via network!", status_debug)
             return 0  #failure
         return 1  #success
 
     def pingEndpoint(self, uri):
         unixCmd = "curl --head " + uri
-
+        self.appendToLogs("Testing: ",uri)
         try:
             (out, err) = self.executeCommand(unixCmd)
 
